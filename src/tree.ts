@@ -62,3 +62,20 @@ export function postOrderTraversal<T>(current: Node<T>, result: T[]): T[] {
 
 	return result;
 }
+
+export function breathFirstTraversal<T>(root: Node<T>): T[] {
+	let breath: Node<T>[] = [root];
+	let res: T[] = [];
+
+	while (breath.length > 0) {
+		let curr = breath.shift();
+		console.log(curr);
+		if (curr) {
+			breath = [...breath, ...curr.children];
+		}
+
+		if (curr) res.push(curr.value);
+	}
+
+	return res;
+}
