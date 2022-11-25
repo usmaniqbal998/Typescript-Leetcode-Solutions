@@ -43,6 +43,29 @@ export function preOrderTraversal<T>(current: Node<T>, result: T[]): T[] {
 	return result;
 }
 
+export function preOrderLoop<T>(root: Node<T> | null): T[] {
+	const res: T[] = [];
+	const stack: Node<T>[] = [];
+
+	let current = root;
+	if (current) stack.push(current);
+
+	while (stack.length !== 0) {
+		current = stack.pop() || null;
+		res.push(current?.value as T);
+
+		if (current?.children[1]) {
+			stack.push(current.children[1]);
+		}
+
+		if (current?.children[0]) {
+			stack.push(current.children[0]);
+		}
+	}
+
+	return res;
+}
+
 export function inOrderTraversal<T>(current: Node<T>, result: T[]): T[] {
 	if (current === undefined) return result;
 
@@ -51,6 +74,26 @@ export function inOrderTraversal<T>(current: Node<T>, result: T[]): T[] {
 	inOrderTraversal(current.children[1], result);
 
 	return result;
+}
+
+export function inOrderLoop<T>(root: Node<T> | null): T[] {
+	const res: T[] = [];
+	const stack: Node<T>[] = [];
+
+	let current = root;
+
+	while (current !== null || stack.length !== 0) {
+		while (current !== null) {
+			stack.push(current);
+			current = current?.children[0] || null;
+		}
+
+		current = stack.pop() || null;
+		res.push(current!.value);
+		current = current?.children[1] || null;
+	}
+
+	return res;
 }
 
 export function postOrderTraversal<T>(current: Node<T>, result: T[]): T[] {
@@ -69,7 +112,6 @@ export function breathFirstTraversal<T>(root: Node<T>): T[] {
 
 	while (breath.length > 0) {
 		let curr = breath.shift();
-		console.log(curr);
 		if (curr) {
 			breath = [...breath, ...curr.children];
 		}
