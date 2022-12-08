@@ -1,3 +1,5 @@
+//	https://leetcode.com/problems/single-row-keyboard/
+
 export function calculateTime(keyboard: string, word: string): number {
 	const map = {};
 	let sum = 0;
