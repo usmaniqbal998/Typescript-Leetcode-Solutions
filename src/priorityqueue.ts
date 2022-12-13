@@ -10,11 +10,16 @@ export class MinHeap {
 		this.length++;
 	}
 
+	get getdata() {
+		return this.data;
+	}
+
 	delete(): number | undefined {
 		if (this.length === 0) return undefined;
 
 		const res = this.data[0];
 		this.length--;
+
 		if (this.length === 0) {
 			this.data = [];
 			return res;
@@ -23,6 +28,18 @@ export class MinHeap {
 		this.data[0] = this.data[this.length];
 		this.heapifyDown(0);
 		return res;
+	}
+
+	update(idx: number, value: number) {
+		const parent = this.parent(idx);
+		this.data[idx] = value;
+
+		if (this.data[idx] < this.data[parent]) {
+			this.heapifyUp(idx);
+			return;
+		}
+
+		this.heapifyDown(idx);
 	}
 
 	heapifyUp(idx: number) {

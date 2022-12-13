@@ -8,9 +8,9 @@ export class GraphNode {
 		this.neighbors = neighbors === undefined ? [] : neighbors;
 	}
 }
-//  leetcode.com/problems/clone-graph/description/
+//  https://leetcode.com/problems/clone-graph/description/
 
-https: export function cloneGraph(node: GraphNode | null): GraphNode | null {
+export function cloneGraph(node: GraphNode | null): GraphNode | null {
 	let visited = new Map<number, GraphNode>();
 	const res = exploreGraph(node, visited);
 	console.log(res);
