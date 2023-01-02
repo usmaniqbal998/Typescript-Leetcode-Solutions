@@ -1,4 +1,4 @@
-import { maxAreaOfIsland } from '../islandcount';
+import { maxAreaOfIsland } from '../maxareaofislands';
 
 it('conts island from 2d array', () => {
 	const arr = [

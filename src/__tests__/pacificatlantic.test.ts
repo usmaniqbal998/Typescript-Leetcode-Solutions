@@ -10,11 +10,12 @@ it('should return list of indexes where water fall in both oceans', () => {
 			[5, 1, 1, 2, 4],
 		])
 	).toEqual([
+		[3, 0],
+		[4, 0],
 		[0, 4],
+		[3, 1],
 		[1, 3],
 		[2, 2],
-		[3, 0],
-		[3, 1],
-		[4, 0],
+		[1, 4],
 	]);
 });
