@@ -7,7 +7,7 @@ const directions = {
 	left: [0, -1],
 };
 
-function floodFill(
+export function floodFill(
 	image: number[][],
 	sr: number,
 	sc: number,
