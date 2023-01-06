@@ -37,3 +37,12 @@ export function breathFirst(graphs: Graph, source: string) {
 		queue.push(...neighbours);
 	}
 }
+
+//	adjacency list 2d
+
+export function depthfirstRecursive_2d(graphs: number[][], source: number) {
+	for (let node of graphs[source]) {
+		console.log(node);
+		depthfirstRecursive_2d(graphs, node);
+	}
+}
