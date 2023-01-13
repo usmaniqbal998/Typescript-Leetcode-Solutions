@@ -15,7 +15,6 @@ function dfs(
 	node: number,
 	parent: number
 ): boolean {
-	console.log(arguments);
 	if (visited.has(node)) return true;
 	visited.add(node);
 
@@ -27,12 +26,3 @@ function dfs(
 
 	return false;
 }
-
-/*
-[
-[1,2]
-[0,2]
-[0,1,3]
-[2]
-]
-*/
