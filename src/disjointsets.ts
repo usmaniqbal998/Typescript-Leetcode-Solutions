@@ -5,10 +5,11 @@ export function unionFind(
 	connected: [number, number][]
 ): boolean[] {
 	let sets: number[] = new Array(graph.length).fill(-1);
+	let rank: number[] = new Array(graph.length).fill(1);
 
 	for (let i = 0; i < graph.length - 1; i++) {
 		for (let neighbour of graph[i]) {
-			union(sets, neighbour, i);
+			union(sets, neighbour, i, rank);
 		}
 	}
 
@@ -20,10 +21,25 @@ export function unionFind(
 	return res;
 }
 
-export function union(arr: number[], nodeA: number, nodeB: number): number[] {
-	if (arr[nodeB] === nodeA) return arr;
+export function union(
+	arr: number[],
+	nodeA: number,
+	nodeB: number,
+	rank: number[]
+): number[] {
 	let parentNodeB = find(arr, nodeB);
-	arr[parentNodeB] = nodeA;
+	let parentNodeA = find(arr, nodeA);
+
+	if (parentNodeA !== parentNodeB) {
+		if (rank[parentNodeA] > rank[parentNodeB]) {
+			arr[parentNodeB] = parentNodeA;
+		} else if (rank[parentNodeA] < rank[parentNodeB]) {
+			arr[parentNodeA] = parentNodeB;
+		} else {
+			arr[parentNodeA] = parentNodeB;
+			rank[parentNodeA] += 1;
+		}
+	}
 
 	return arr;
 }
