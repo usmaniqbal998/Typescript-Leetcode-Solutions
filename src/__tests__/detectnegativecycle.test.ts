@@ -1,4 +1,4 @@
-import { belmanford } from '../belmanford';
+import { belmanford } from '../detectnegativecycle';
 
 it('detects negative cycle and show shortest path', () => {
 	let g = [
