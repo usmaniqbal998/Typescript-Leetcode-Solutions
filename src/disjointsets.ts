@@ -46,5 +46,5 @@ export function union(
 
 export function find(arr: number[], node: number): number {
 	if (arr[node] === -1) return node;
-	return find(arr, arr[node]);
+	return (arr[node] = find(arr, arr[node]));
 }
